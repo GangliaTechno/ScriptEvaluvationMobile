@@ -25,10 +25,17 @@ class _SplashScreenState extends State<SplashScreen> {
     _controller.setLooping(true); // Make sure the video loops
     Timer(Duration(seconds: 5), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (_) => HomeScreen(), 
+        builder: (_) => HomeScreen(),
       ));
     });
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,11 +58,5 @@ class _SplashScreenState extends State<SplashScreen> {
         ],
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
   }
 }
